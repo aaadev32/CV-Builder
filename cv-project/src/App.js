@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './styles/App.css';
 import GeneralInfo from './components/GeneralInfo.js'
 import EducationalInfo from './components/EducationalInfo.js';
