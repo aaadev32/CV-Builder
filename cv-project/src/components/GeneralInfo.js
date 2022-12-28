@@ -1,4 +1,4 @@
-import React, { useEffect, Component } from "react";
+import React, { Component, createRef } from "react";
 import '../styles/general.css';
 
 class Generalinfo extends Component {
@@ -18,9 +18,9 @@ class Generalinfo extends Component {
         this.displayInfo = this.displayInfo.bind(this);
         this.editInfo = this.editInfo.bind(this);
 
-        this.nameRef = React.createRef();
-        this.emailRef = React.createRef();
-        this.phoneRef = React.createRef();
+        this.nameRef = createRef();
+        this.emailRef = createRef();
+        this.phoneRef = createRef();
     }
 
     handleChanges(e) {
@@ -40,17 +40,14 @@ class Generalinfo extends Component {
     handleSubmit(e) {
         e.preventDefault()
         this.setState(() => ({
-            editInfo: this.state.editInfo ? false : true,
+            editInfo: this.state.editInfo = false,
         }));
     }
-
-    displayInfo(e) {
-        const target = e.target;
-        const name = target.name;
-
-        return <p>{this.state[name]}</p>;
+    displayInfo() {
+        this.nameRef.current.textContent = this.state.name;
+        this.emailRef.current.textContent = this.state.email;
+        this.phoneRef.current.textContent = this.state.phone;
     }
-
     editInfo() {
         this.setState(() => ({
             editInfo: this.state.editInfo ? false : true,
@@ -68,13 +65,13 @@ class Generalinfo extends Component {
                 <input className="general-info" id="phone" name="phone" type="number" onChange={this.handleChanges} style={{ display: this.state.editInfo ? "block" : "none" }}></input>
 
                 <ul>
-                    <li className="output-fields" name="name" ref={this.nameRef} onSubmit={this.displayInfo}></li>
-                    <li className="output-fields" name="email" ref={this.emailRef} onSubmit={this.displayInfo}></li>
-                    <li className="output-fields" name="phone" ref={this.phoneRef} onSubmit={this.displayInfo}></li>
+                    <li className="output-fields" name="name" ref={this.nameRef}></li>
+                    <li className="output-fields" name="email" ref={this.emailRef}></li>
+                    <li className="output-fields" name="phone" ref={this.phoneRef}></li>
                 </ul>
 
                 <div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" onClick={this.displayInfo}>Submit</button>
                     <button type="button" onClick={this.editInfo}>Edit</button>
                 </div>
             </form >
