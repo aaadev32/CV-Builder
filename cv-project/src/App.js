@@ -5,7 +5,7 @@ import Experience from './components/Experience.js';
 
 function App() {
   return (
-    <div className="App">
+    <div class="app">
       <GeneralInfo />
       <EducationalInfo />
       <Experience />

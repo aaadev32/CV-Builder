@@ -31,10 +31,6 @@ class Generalinfo extends Component {
             [name]: value
         });
 
-        console.log(this.state.name)
-        console.log(this.state.email)
-        console.log(this.state.phone)
-
     }
 
     handleSubmit(e) {
@@ -57,17 +53,18 @@ class Generalinfo extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
+                <h2 class="info-header">General Information</h2>
                 <label for="name" style={{ display: this.state.editInfo ? "block" : "none" }}>Name</label>
                 <input className="general-info" id="name" name="name" type="text" onChange={this.handleChanges} style={{ display: this.state.editInfo ? "block" : "none" }}></input>
                 <label for="email" style={{ display: this.state.editInfo ? "block" : "none" }}>Email</label>
                 <input className="general-info" id="email" name="email" type="email" onChange={this.handleChanges} style={{ display: this.state.editInfo ? "block" : "none" }}></input>
                 <label for="phone" style={{ display: this.state.editInfo ? "block" : "none" }}>Phone Number</label>
-                <input className="general-info" id="phone" name="phone" type="number" onChange={this.handleChanges} style={{ display: this.state.editInfo ? "block" : "none" }}></input>
+                <input className="general-info" id="phone" name="phone" type="tel" onChange={this.handleChanges} style={{ display: this.state.editInfo ? "block" : "none" }}></input>
 
-                <ul>
-                    <li className="output-fields" name="name" ref={this.nameRef}></li>
-                    <li className="output-fields" name="email" ref={this.emailRef}></li>
-                    <li className="output-fields" name="phone" ref={this.phoneRef}></li>
+                <ul style={{ display: this.state.editInfo ? "none" : "block" }}>
+                    <li className="output-fields" ref={this.nameRef}></li>
+                    <li className="output-fields" ref={this.emailRef}></li>
+                    <li className="output-fields" ref={this.phoneRef}></li>
                 </ul>
 
                 <div>
