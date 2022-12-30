@@ -1,13 +1,15 @@
 html {
     display: flex;
     justify-content: center;
-    background-color: rgba(113, 126, 113, 0.6);
+    background-color: grey;
 }
 
 form {
     display: flex;
     flex-direction: column;
     align-content: center;
+    background-color: grey;
+    padding: 25px;
 }
 
 input {
